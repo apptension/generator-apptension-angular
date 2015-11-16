@@ -7,7 +7,7 @@
   "moduleType": [
     "es6"
   ],
-  "license": "unlicensed",
+  "license": "<%= license %>",
   "ignore": [
     "**/.*",
     "node_modules",
