@@ -63,6 +63,10 @@ describe('apptension angular:app', function () {
     assert.file('.gitignore');
   });
 
+  it('creates protractor.conf', function () {
+    assert.file('protractor.conf');
+  });
+
   describe('app', function () {
     it('main.js file is created', function () {
       assert.file('app/src/main.js');

@@ -54,6 +54,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('app'),
         this.destinationPath('app')
       );
+      this.directory(
+        this.templatePath('specE2E'),
+        this.destinationPath('specE2E')
+      );
     },
 
     projectfiles: function () {
@@ -72,6 +76,10 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('gitignore'),
         this.destinationPath('.gitignore')
+      );
+      this.fs.copy(
+        this.templatePath('_protractor.conf'),
+        this.destinationPath('protracotr.conf')
       );
     }
   },
