@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test",
-    "test:watch": "gulp test:watch",
-    "build": "gulp --env production",
-    "stage": "gulp --env staging",
-    "dev": "gulp serve"
+    "test": "node ./node_modules/gulp/bin/gulp.js test",
+    "test:watch": "node ./node_modules/gulp/bin/gulp.js test:watch",
+    "build": "node ./node_modules/gulp/bin/gulp.js --env production",
+    "stage": "node ./node_modules/gulp/bin/gulp.js --env staging",
+    "dev": "node ./node_modules/gulp/bin/gulp.js serve"
   },
   "repository": {
     "type": "git",
