@@ -67,6 +67,10 @@ describe('apptension angular:app', function () {
     assert.file('protractor.conf');
   });
 
+  it('creates Vagrantfile', function () {
+    assert.file('Vagrantfile');
+  });
+
   describe('app', function () {
     it('main.js file is created', function () {
       assert.file('app/src/main.js');
@@ -74,6 +78,24 @@ describe('apptension angular:app', function () {
 
     it('main.scss file is created', function () {
       assert.file('app/src/main.scss');
+    });
+  });
+
+  describe('config', function () {
+    it('docker-devel-compose.yml file is created', function () {
+      assert.file('config/docker-devel-compose.yml');
+    });
+
+    it('vagrant-devel-startup.sh file is created', function () {
+      assert.file('config/vagrant-devel-startup.sh');
+    });
+
+    it('docker-devel-base/Dockerfile is created', function () {
+      assert.file('config/docker-devel-base/Dockerfile');
+    });
+
+    it('docker-devel-backend/Dockerfile is created', function () {
+      assert.file('config/docker-devel-backend/Dockerfile');
     });
   });
 });

@@ -55,6 +55,7 @@ gulp.task('copy-public-assets:watch', ['copy-public-assets'], function () {
 });
 
 gulp.task('copy-production', tasks.copyProduction);
+gulp.task('zip-dist', tasks.zip);
 
 gulp.task('test', tasks.karma(false));
 gulp.task('test:watch', tasks.karma(true));
@@ -92,10 +93,12 @@ gulp.task('default', function (callback) {
     'eslint',
     'test',
     'spritesmith',
-    ['webpack', 'sass', 'images', 'copy-production'],
+    'webpack',
+    ['sass', 'images', 'copy-production'],
     'copy-public-assets',
     'rev',
     'compile-index',
+    'zip-dist',
     callback
   );
 });

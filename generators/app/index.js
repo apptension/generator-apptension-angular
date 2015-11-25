@@ -58,6 +58,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('specE2E'),
         this.destinationPath('specE2E')
       );
+      this.directory(
+        this.templatePath('config'),
+        this.destinationPath('config')
+      );
     },
 
     projectfiles: function () {
@@ -79,7 +83,11 @@ module.exports = yeoman.generators.Base.extend({
       );
       this.fs.copy(
         this.templatePath('_protractor.conf'),
-        this.destinationPath('protracotr.conf')
+        this.destinationPath('protractor.conf')
+      );
+      this.fs.copy(
+        this.templatePath('_Vagrantfile'),
+        this.destinationPath('Vagrantfile')
       );
     }
   },
