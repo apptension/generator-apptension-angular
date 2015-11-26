@@ -63,6 +63,7 @@ gulp.task('test:watch', tasks.karma(true));
 gulp.task('clean', tasks.clean);
 
 gulp.task('rev', tasks.rev);
+gulp.task('rev-replace', tasks.revReplace);
 
 gulp.task('browser-sync', tasks.browserSync);
 
@@ -98,6 +99,7 @@ gulp.task('default', function (callback) {
     'copy-public-assets',
     'rev',
     'compile-index',
+    'rev-replace',
     'zip-dist',
     callback
   );
