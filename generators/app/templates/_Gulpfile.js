@@ -4,6 +4,7 @@ var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 
 var tasks = require('apptension-tools/gulp')({
+  domain: 'localhost',
   webpack: {
     plugins: [
       new NgAnnotatePlugin({add: true})
