@@ -71,6 +71,10 @@ describe('apptension angular:app', function () {
     assert.file('Vagrantfile');
   });
 
+  it('creates hbs-partials directory', function () {
+    assert.file('hbs-partials/.gitkeep');
+  });
+
   describe('app', function () {
     it('main.js file is created', function () {
       assert.file('app/src/main.js');
