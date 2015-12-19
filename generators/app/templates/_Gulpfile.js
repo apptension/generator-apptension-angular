@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 var runSequence = require('run-sequence');
 var NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
@@ -27,32 +28,44 @@ gulp.task('webpack:watch', tasks.webpack(true));
 
 gulp.task('compile-index', tasks.compileIndex);
 gulp.task('compile-index:watch', ['compile-index'], function () {
-  return gulp.watch(tasks.config.watchPaths.index, ['compile-index']);
+  watch(tasks.config.watchPaths.index, function () {
+    runSequence('compile-index');
+  });
 });
 
 gulp.task('sass', tasks.sass);
 gulp.task('sass:watch', ['sass'], function () {
-  return gulp.watch(tasks.config.watchPaths.sass, ['sass']);
+  watch(tasks.config.watchPaths.sass, function () {
+    runSequence('sass');
+  });
 });
 
 gulp.task('eslint', tasks.eslint);
 gulp.task('eslint:watch', ['eslint'], function () {
-  gulp.watch(tasks.config.watchPaths.eslint, ['eslint']);
+  watch(tasks.config.watchPaths.eslint, function () {
+    runSequence('eslint');
+  });
 });
 
 gulp.task('spritesmith', tasks.spritesmith);
 gulp.task('spritesmith:watch', function () {
-  gulp.watch(tasks.config.watchPaths.sprites, ['spritesmith']);
+  watch(tasks.config.watchPaths.sprites, function () {
+    runSequence('spritesmith');
+  });
 });
 
 gulp.task('images', tasks.images);
 gulp.task('images:watch', ['images'], function () {
-  gulp.watch(tasks.config.watchPaths.images, ['images']);
+  watch(tasks.config.watchPaths.images, function () {
+    runSequence('images');
+  });
 });
 
 gulp.task('copy-public-assets', tasks.copyPublicAssets);
 gulp.task('copy-public-assets:watch', ['copy-public-assets'], function () {
-  gulp.watch(tasks.config.watchPaths.public, ['copy-public-assets']);
+  watch(tasks.config.watchPaths.public, function () {
+    runSequence('copy-public-assets');
+  });
 });
 
 gulp.task('copy-production', tasks.copyProduction);
