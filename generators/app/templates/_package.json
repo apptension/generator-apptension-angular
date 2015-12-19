@@ -61,6 +61,7 @@
     "karma-webpack": "^1.7.0",
     "merge-stream": "^1.0.0",
     "phantomjs": "^1.9.18",
+    "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1",
