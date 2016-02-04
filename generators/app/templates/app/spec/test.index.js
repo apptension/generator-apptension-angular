@@ -1,6 +1,5 @@
 import 'angular';
 import 'angular-mocks/angular-mocks';
-import 'phantomjs-polyfill';
 
 window.ngInject = (fn) => fn;
 

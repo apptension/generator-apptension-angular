@@ -6,13 +6,13 @@ import translateCookieStorage from 'angular-translate-storage-cookie';
 import translateStaticLoader from 'angular-translate-loader-static-files';
 
 import translateConfig from './translate.config';
-
+import LiteralLanguageLoader from './literalLanguageLoader.service';
 
 export default angular.module('config', [
   translate,
   translateLocalStorage,
   translateCookieStorage,
   translateStaticLoader
-])
-  .config(envConfig.translate ? translateConfig : () => {})
+]).config(envConfig.translate ? translateConfig : () => {})
+  .factory('LiteralLanguageLoader', LiteralLanguageLoader)
   .name;

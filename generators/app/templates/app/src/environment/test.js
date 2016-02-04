@@ -1,4 +1,4 @@
-import defaultsDeep from 'lodash/object/defaultsDeep';
+import defaultsDeep from 'lodash/defaultsDeep';
 
 import base from './base';
 

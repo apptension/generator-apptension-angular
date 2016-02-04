@@ -3,7 +3,7 @@ import envConfig from 'env-config';
 import appTemplate from './app.html';
 
 export default ngInject(function ($translateProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
-  let availableLanguages = _.pluck(envConfig.langs, 'code');
+  let availableLanguages = _.map(envConfig.langs, 'code');
 
   $locationProvider.html5Mode(true);
   $urlRouterProvider.otherwise(`/404`);
