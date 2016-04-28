@@ -1,3 +1,5 @@
+require('./src/main.scss');
+
 /**
  * ng-annotate helper
  */
@@ -17,4 +19,4 @@ require('angular');
 /**
  * Include your application
  */
-require('./app');
+require('./src/app/index');

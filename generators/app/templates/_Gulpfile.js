@@ -9,16 +9,21 @@ var tasks = require('apptension-tools/gulp')({
   webpack: {
     plugins: [
       new NgAnnotatePlugin({add: true})
-    ]
+    ],
+    module: {
+      loaders: [
+        {test: /\.html$/, loader: 'html'}
+      ]
+    },
+    sassLoader: {
+      includePaths: [
+        require('bourbon').includePaths,
+        require('node-neat').includePaths[1]
+      ]
+    }
   },
   webpackDevServer: {
     historyApiFallback: true
-  },
-  sass: {
-    includePaths: [
-      require('bourbon').includePaths,
-      require('node-neat').includePaths
-    ]
   }
 });
 var env = tasks.env;
@@ -26,45 +31,10 @@ var env = tasks.env;
 gulp.task('webpack', tasks.webpack(false));
 gulp.task('webpack:watch', tasks.webpack(true));
 
-gulp.task('compile-index', tasks.compileIndex);
-gulp.task('compile-index:watch', ['compile-index'], function () {
-  watch(tasks.config.watchPaths.index, function () {
-    runSequence('compile-index');
-  });
-});
-
-gulp.task('sass', tasks.sass);
-gulp.task('sass:watch', ['sass'], function () {
-  watch(tasks.config.watchPaths.sass, function () {
-    runSequence('sass');
-  });
-});
-
 gulp.task('eslint', tasks.eslint);
 gulp.task('eslint:watch', ['eslint'], function () {
   watch(tasks.config.watchPaths.eslint, function () {
     runSequence('eslint');
-  });
-});
-
-gulp.task('spritesmith', tasks.spritesmith);
-gulp.task('spritesmith:watch', function () {
-  watch(tasks.config.watchPaths.sprites, function () {
-    runSequence('spritesmith');
-  });
-});
-
-gulp.task('images', tasks.images);
-gulp.task('images:watch', ['images'], function () {
-  watch(tasks.config.watchPaths.images, function () {
-    runSequence('images');
-  });
-});
-
-gulp.task('copy-public-assets', tasks.copyPublicAssets);
-gulp.task('copy-public-assets:watch', ['copy-public-assets'], function () {
-  watch(tasks.config.watchPaths.public, function () {
-    runSequence('copy-public-assets');
   });
 });
 
@@ -76,9 +46,6 @@ gulp.task('test:watch', tasks.karma(true));
 
 gulp.task('clean', tasks.clean);
 
-gulp.task('rev', tasks.rev);
-gulp.task('rev-replace', tasks.revReplace);
-
 gulp.task('browser-sync', tasks.browserSync);
 
 gulp.task('serve', function (callback) {
@@ -86,8 +53,7 @@ gulp.task('serve', function (callback) {
   runSequence(
     'clean',
     'eslint:watch',
-    'spritesmith',
-    ['webpack:watch', 'compile-index:watch', 'sass:watch', 'spritesmith:watch', 'images:watch', 'copy-public-assets:watch'],
+    'webpack:watch',
     'browser-sync',
     callback
   );
@@ -106,14 +72,8 @@ gulp.task('default', function (callback) {
   runSequence(
     'clean',
     'eslint',
-    'test',
-    'spritesmith',
     'webpack',
-    ['sass', 'images', 'copy-production'],
-    'copy-public-assets',
-    'rev',
-    'compile-index',
-    'rev-replace',
+    'copy-production',
     'zip-dist',
     callback
   );

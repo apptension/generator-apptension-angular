@@ -1,8 +1,8 @@
 'use strict';
 
 var path = require('path');
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-assert');
+var helpers = require('yeoman-test');
 var os = require('os');
 
 describe('apptension angular:app', function () {
@@ -20,10 +20,6 @@ describe('apptension angular:app', function () {
       .withOptions({skipInstall: true})
       .withPrompts(promptOptions)
       .on('end', done);
-  });
-
-  it('creates bower.json', function () {
-    assert.file('bower.json');
   });
 
   it('creates .editorconfig', function () {
@@ -73,15 +69,11 @@ describe('apptension angular:app', function () {
 
   describe('app', function () {
     it('main.js file is created', function () {
-      assert.file('app/src/main.js');
+      assert.file('app/main.js');
     });
 
     it('main.scss file is created', function () {
       assert.file('app/src/main.scss');
-    });
-
-    it('creates hbs-partials directory', function () {
-      assert.file('app/hbs-partials/.gitkeep');
     });
   });
 });

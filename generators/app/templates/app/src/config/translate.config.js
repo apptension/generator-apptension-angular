@@ -1,17 +1,10 @@
 import envConfig from 'env-config';
-
+import en from '../languages/en.json';
 
 export default ngInject(function ($translateProvider) {
-  $translateProvider.useLoader('LiteralLanguageLoader', {
-    /**
-     * Absolute paths defined as literals to allow rev task
-     * to find and substitute them
-     */
-    langs: {
-      en: '/public/languages/en.json',
-      id: '/public/languages/id.json'
-    }
-  }).useSanitizeValueStrategy('escaped')
+  $translateProvider
+    .translations('en', en)
+    .useSanitizeValueStrategy('escaped')
     .useLocalStorage();
 
   if (!$translateProvider.use()) {

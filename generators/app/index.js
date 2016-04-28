@@ -4,7 +4,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   prompting: function () {
     var done = this.async();
 
@@ -43,11 +43,6 @@ module.exports = yeoman.generators.Base.extend({
       this.template(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
-        this.props
-      );
-      this.template(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json'),
         this.props
       );
       this.directory(

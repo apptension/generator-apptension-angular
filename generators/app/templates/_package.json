@@ -19,9 +19,10 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "gulp-watch": "^4.3.5",
-    "apptension-tools": "^4.2.1",
+    "apptension-tools": "^5.0.18",
     "eslint-config-apptension": "^1.0.2",
     "exports-loader": "^0.6.2",
+    "gulp": "^3.9.1",
     "ng-annotate-webpack-plugin": "^0.1.2",
     "run-sequence": "^1.1.3"
   },
